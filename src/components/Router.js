@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  HashRouter as Router, Route, Routes
 } from "react-router-dom";
 import Auth from "../routes/Auth";
 import EditProfile from "../routes/EditProfile";
@@ -10,28 +9,21 @@ import Profile from "../routes/Profile";
 
 
 const AppRouter = () => {
-    const [isLoggenIn, setIsLoggenIn] = useState(false)
-    const router = createBrowserRouter([
-        {
-          path: "/",
-          element: isLoggenIn ? <Home /> : <Auth />,
-        },
-        {
-          path: "/edit-profile",
-          element: <EditProfile />,
-        },
-        {
-          path: "/profile",
-          element: <Profile />,
-        },
-    ]);
-    return router
-}
-
-const Router = () => {
-    const router = AppRouter()
-    return(
-        <RouterProvider router={router} />
-    )
-}
-export default Router;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  return (
+    <Router>
+      <Routes>
+        <Route>
+          {isLoggedIn ? (
+            <>
+              <Route path='/' element={<Home/>} />
+            </>
+            ) : (
+              <Route path='/' element={<Auth/>} />
+          )}
+        </Route>
+      </Routes>
+    </Router>
+  );
+  }
+export default AppRouter;

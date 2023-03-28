@@ -1,3 +1,11 @@
-import React from "react";
+import React from 'react'
 
-export default () => <span>Auth</span>
+const Auth = () => {
+    return(
+        <div>
+            <h1>Auth</h1>
+        </div>
+    )
+}
+
+export default Auth
