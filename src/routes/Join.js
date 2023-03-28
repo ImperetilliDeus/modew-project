@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { authService } from "fbase";
-import { Link } from "react-router-dom";
-import Home from "../routes/Home";
 
-const Auth = ({isLoggedIn}) => {
-
+const SignIn = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
   const [error, setError] = useState("");
+
 
   const onChange = (event) => {
     const {
@@ -29,28 +27,18 @@ const Auth = ({isLoggedIn}) => {
 
     try {
       let data;
-      data = await authService.signInWithEmailAndPassword(email,password);
-      // if (newAccount) {
-      //   data = await authService.signInWithEmailAndPassword(
-      //     email,
-      //     password
-      //   );
-      // } else {
-      //   data = await authService.createUserWithEmailAndPassword(email, password);
-      // }
+        data = await authService.createUserWithEmailAndPassword(email, password);
       console.log(data);
     } catch (error) {
       setError(error.message);
     }
   };
 
-
+  const toggleAccount =()=> setNewAccount((prev) =>!prev);
 
   return (
-    
     <div>
-
-        <h1>로그인 임시 페이지</h1>
+        <h1>회원가입 임시 페이지</h1>
       <form onSubmit={onSubmit}>
         <input
           name="email"
@@ -70,18 +58,13 @@ const Auth = ({isLoggedIn}) => {
           onChange={onChange}
         />
         <br/>
-        <input type="submit" value="로그인"/>
+        <input type="submit" value="회원가입"/>
         <br/>
         {error}
       </form>
-      <br/>
-      <div>
-        <button>구글 계정으로 로그인</button>
-        <br/>
-        <button><Link to ="../routes/Join">회원가입</Link></button>
-      </div>
+
     </div>
   );
 
 }
-export default Auth;
+export default SignIn;
