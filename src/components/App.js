@@ -25,6 +25,7 @@ function App() {
       {init ? <AppRouter isLoggedIn={isLoggedIn}/>:<h1>초기화 중...</h1>}
       {/* <AppRouter/> */}
       <footer>
+        <h1>Tes2222t333asdasdasdasdas34448291830129830921844</h1>
         &copy; {new Date().getFullYear()} MODEW
       </footer>
     </>
