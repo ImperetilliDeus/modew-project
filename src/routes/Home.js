@@ -5,7 +5,7 @@ const Home = () => {
     return(
         <div>
             <nav>
-                <Link to ="SignIn">회원가입</Link>
+                <Link to ="Join">회원가입</Link>
                 <Link to ="Auth">로그인</Link>
             </nav>
             <h1>Home</h1>
